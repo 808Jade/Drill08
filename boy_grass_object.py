@@ -1,6 +1,7 @@
 from pico2d import *
 import random
 
+
 # Game object class here
 class Grass:
     def __init__(self):
@@ -12,18 +13,20 @@ class Grass:
     def update(self):
         pass
 
+
 class Boy:
     def __init__(self):
-        self.x, self.y = random.randint(100,700), 90
+        self.x, self.y = random.randint(100, 700), 90
         self.frame = 0
         self.image = load_image('run_animation.png')
 
     def draw(self):
-        self.image.clip_draw(self.frame*100, 0, 100 ,100, self.x, self.y)
+        self.image.clip_draw(self.frame * 100, 0, 100, 100, self.x, self.y)
 
     def update(self):
         self.frame = random.randint(0, 7)
         self.x += 5
+
 
 def handle_events():
     global running
@@ -34,6 +37,7 @@ def handle_events():
         elif event.type == SDL_KEYDOWN and event.key == SDLK_ESCAPE:
             running = False
 
+
 def reset_world():
     global running
     global grass
@@ -43,11 +47,12 @@ def reset_world():
     running = True
     world = []
 
-    grass = Grass() # 클래스를 이용해서 객제를 찍어냄.
+    grass = Grass()  # 클래스를 이용해서 객제를 찍어냄.
     world.append(grass)
 
     team = [Boy() for i in range(11)]
     world += team
+
 
 def render_world():
     clear_canvas()
@@ -60,6 +65,7 @@ def update_world():
     for o in world:
         o.update()
     pass
+
 
 open_canvas()
 # initialization code
