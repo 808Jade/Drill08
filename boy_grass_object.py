@@ -80,10 +80,12 @@ def reset_world():
     team = [Boy() for i in range(11)]
     world += team
 
-    small_ball = [Smallball() for i in range(13)]
+    rand = random.randint(1,19)
+    small_ball = [Smallball() for i in range(rand)]
     world += small_ball
 
-    big_ball = [Bigball() for i in range(7)]
+    rand = 20 - rand
+    big_ball = [Bigball() for i in range(rand)]
     world+= big_ball
 
 def render_world():
